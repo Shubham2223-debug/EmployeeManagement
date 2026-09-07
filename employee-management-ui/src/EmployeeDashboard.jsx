@@ -19,6 +19,15 @@ function EmployeeDashboard({ onLogout }) {
         joiningDate: '',
         isActive: true
     })
+    useEffect(() => {
+        if (successMessage) {
+            const timer = setTimeout(() => {
+                setSuccessMessage('')
+            }, 3000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [successMessage])
 
     useEffect(() => {
         const fetchEmployees = async () => {
